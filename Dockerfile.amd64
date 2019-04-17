@@ -7,8 +7,12 @@
 FROM ubuntu:18.04 as system
 
 
+ENV http_proxy http://child-prc.intel.com:911
+ENV https_proxy http://child-prc.intel.com:911
+ENV no_proxy 127.0.0.1,/var/run/docker.sock
 
-RUN sed -i 's#http://archive.ubuntu.com/#http://tw.archive.ubuntu.com/#' /etc/apt/sources.list; 
+ADD sources.list /etc/apt/sources.list
+#RUN sed -i 's#http://archive.ubuntu.com/#http://tw.archive.ubuntu.com/#' /etc/apt/sources.list;
 
 
 # built-in packages
